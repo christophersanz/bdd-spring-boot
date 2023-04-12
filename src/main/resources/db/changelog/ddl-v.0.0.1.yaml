@@ -1,0 +1,58 @@
+databaseChangeLog:
+    - changeSet:
+          id: perfil_create_schema
+          author: Autentia
+          changes:
+              - sql:
+                    sql: CREATE SCHEMA IF NOT EXISTS perfil
+    - changeSet:
+          id: perfil_create_table_perfil_cliente
+          author: Autentia
+          changes:
+              - createTable:
+                    schemaName: perfil
+                    tableName: perfil_cliente
+                    columns:
+                        - column:
+                              name: id
+                              type: uuid
+                              constraints:
+                                  primaryKey: true
+                                  nullable: false
+                        - column:
+                              name: nombre
+                              type: VARCHAR(200)
+                              constraints:
+                                  nullable: false
+                        - column:
+                              name: fecha_nacimiento
+                              type: DATE
+                        - column:
+                              name: email
+                              type: VARCHAR(200)
+                        - column:
+                              name: telefono
+                              type: VARCHAR(20)
+    - changeSet:
+          id: insert_cliente
+          author: Autentia
+          changes:
+              - insert:
+                    schemaName: perfil
+                    tableName: perfil_cliente
+                    columns:
+                        - column:
+                              name: id
+                              value: c619934a-d8ac-11ed-afa1-0242ac120002
+                        - column:
+                              name: nombre
+                              value: Christopher Sanz
+                        - column:
+                              name: fecha_nacimiento
+                              value: 19800623
+                        - column:
+                              name: email
+                              value: s.christopher3@gmail.com
+                        - column:
+                              name: telefono
+                              value: 962296846
